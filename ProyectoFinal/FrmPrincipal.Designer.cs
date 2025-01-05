@@ -45,7 +45,6 @@
             this.iconcerrar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -59,7 +58,6 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.MenuVertical.Controls.Add(this.label1);
             this.MenuVertical.Controls.Add(this.lblRol);
             this.MenuVertical.Controls.Add(this.lblUsuario);
             this.MenuVertical.Controls.Add(this.btnUsuario);
@@ -275,15 +273,6 @@
             this.PanelContenedor.Size = new System.Drawing.Size(1033, 600);
             this.PanelContenedor.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 571);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "label1";
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +316,5 @@
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Label lblRol;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.Label label1;
     }
 }

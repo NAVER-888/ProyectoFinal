@@ -26,7 +26,6 @@ namespace ProyectoFinal
             string nombre = txtNombre.Text.Trim();
             string clave = txtClave.Text.Trim();
 
-            // Verificar si los campos están vacíos
             if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(clave))
             {
                 MessageBox.Show("Debe ingresar tanto el nombre de usuario como la clave.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -39,7 +38,6 @@ namespace ProyectoFinal
             {
                 if (usuario.rol == "Administrador")
                 {
-                    // Si es administrador, abrir el formulario principal
                     MessageBox.Show($"Bienvenido, {usuario.nombre}. Rol: Administrador", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FrmPrincipal frmPrincipal = new FrmPrincipal(usuario);
                     frmPrincipal.Show();
@@ -47,7 +45,6 @@ namespace ProyectoFinal
                 }
                 else if (usuario.rol == "Operador")
                 {
-                    // Si es operador, abrir el formulario principal con acceso restringido
                     MessageBox.Show($"Bienvenido, {usuario.nombre}. Rol: Operador", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FrmPrincipal frmPrincipal = new FrmPrincipal(usuario);
                     frmPrincipal.Show();
@@ -56,17 +53,14 @@ namespace ProyectoFinal
             }
             else
             {
-                // Si el usuario no es válido, aumentar el contador de intentos fallidos
                 _intentosFallidos++;
 
-                // Mostrar mensaje de error
                 MessageBox.Show("Usuario o clave incorrectos. Intente nuevamente.", "Error de acceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // Verificar si se han excedido los intentos
                 if (_intentosFallidos >= 3)
                 {
                     MessageBox.Show("Ha excedido el número de intentos permitidos. El sistema se cerrará.", "Acceso bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit(); // Cerrar la aplicación después de 3 intentos fallidos
+                    Application.Exit(); 
                 }
             }
         }
