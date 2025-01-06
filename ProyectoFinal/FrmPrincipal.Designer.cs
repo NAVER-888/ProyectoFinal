@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.lblRol = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
@@ -58,8 +56,6 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.MenuVertical.Controls.Add(this.lblRol);
-            this.MenuVertical.Controls.Add(this.lblUsuario);
             this.MenuVertical.Controls.Add(this.btnUsuario);
             this.MenuVertical.Controls.Add(this.btnDetalle);
             this.MenuVertical.Controls.Add(this.btnProductos);
@@ -71,24 +67,7 @@
             this.MenuVertical.Name = "MenuVertical";
             this.MenuVertical.Size = new System.Drawing.Size(267, 650);
             this.MenuVertical.TabIndex = 0;
-            // 
-            // lblRol
-            // 
-            this.lblRol.AutoSize = true;
-            this.lblRol.Location = new System.Drawing.Point(99, 504);
-            this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(35, 13);
-            this.lblRol.TabIndex = 7;
-            this.lblRol.Text = "label1";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(99, 457);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
-            this.lblUsuario.TabIndex = 6;
-            this.lblUsuario.Text = "label1";
+            this.MenuVertical.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuVertical_Paint);
             // 
             // btnUsuario
             // 
@@ -103,7 +82,7 @@
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(250, 40);
             this.btnUsuario.TabIndex = 5;
-            this.btnUsuario.Text = "Usuarios";
+            this.btnUsuario.Text = "Usuario";
             this.btnUsuario.UseVisualStyleBackColor = true;
             this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
             // 
@@ -187,7 +166,7 @@
             // 
             // BarraTitulo
             // 
-            this.BarraTitulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BarraTitulo.BackColor = System.Drawing.Color.Lavender;
             this.BarraTitulo.Controls.Add(this.iconminimizar);
             this.BarraTitulo.Controls.Add(this.iconrestaurar);
             this.BarraTitulo.Controls.Add(this.iconmaximizar);
@@ -267,6 +246,7 @@
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PanelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.Location = new System.Drawing.Point(267, 50);
             this.PanelContenedor.Name = "PanelContenedor";
@@ -286,7 +266,6 @@
             this.Name = "FrmPrincipal";
             this.Text = "FrmPrincipal";
             this.MenuVertical.ResumeLayout(false);
-            this.MenuVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.BarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconminimizar)).EndInit();
@@ -314,7 +293,5 @@
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnUsuario;
-        private System.Windows.Forms.Label lblRol;
-        private System.Windows.Forms.Label lblUsuario;
     }
 }

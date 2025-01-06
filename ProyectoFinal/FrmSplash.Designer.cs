@@ -53,8 +53,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 520);
             this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FrmSplash";
-            this.Text = "FrmSplash";
             this.Load += new System.EventHandler(this.FrmSplash_Load);
             this.ResumeLayout(false);
 

@@ -215,5 +215,9 @@ namespace ProyectoFinal
             }
         }
 
+        private void FrmUsuarios_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

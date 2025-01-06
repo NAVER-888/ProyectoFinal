@@ -207,6 +207,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmUsuarios";
             this.Text = "FrmUsuarios";
+            this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

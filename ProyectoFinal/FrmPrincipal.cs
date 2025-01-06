@@ -104,5 +104,10 @@ namespace ProyectoFinal
         {
             AbrirFromInPanel(new FrmUsuarios());
         }
+
+        private void MenuVertical_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
