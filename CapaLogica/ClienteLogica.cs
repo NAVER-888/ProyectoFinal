@@ -15,16 +15,40 @@ namespace CapaLogica
         {
             _context = new EntidadesContainer();
         }
+        public List<Cliente> ObtenerTodosLosClientes()
+        {
+            try
+            {
+                return _context.Clientes.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los clientes.", ex);
+            }
+        }
 
         public Cliente ObtenerClientePorId(int id)
         {
             return _context.Clientes.FirstOrDefault(c => c.Id == id);
         }
 
-        public void AgregarCliente(Cliente cliente)
+        public bool CrearCliente(Cliente cliente)
         {
-            _context.Clientes.Add(cliente);
-            _context.SaveChanges();
+            try
+            {
+                if (_context.Clientes.Any(c => c.nombre == cliente.nombre))
+                {
+                    return false; 
+                }
+
+                _context.Clientes.Add(cliente);
+                _context.SaveChanges();
+                return true; 
+            }
+            catch (Exception)
+            {
+                return false; 
+            }
         }
 
         public void EliminarCliente(int id)
@@ -37,10 +61,28 @@ namespace CapaLogica
             }
         }
 
-        public void ModificarCliente(Cliente cliente)
+        public bool ActualizarCliente(Cliente cliente)
         {
-            _context.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
-            _context.SaveChanges();
+            try
+            {
+                var clienteExistente = _context.Clientes.FirstOrDefault(c => c.Id == cliente.Id);
+                if (clienteExistente == null)
+                {
+                    return false; 
+                }
+
+                clienteExistente.nombre = cliente.nombre;
+                clienteExistente.direccion = cliente.direccion;
+                clienteExistente.telefono = cliente.telefono;
+                clienteExistente.correo = cliente.correo;
+
+                _context.SaveChanges();
+                return true; 
+            }
+            catch (Exception)
+            {
+                return false; 
+            }
         }
     }
 }

@@ -16,10 +16,7 @@ namespace CapaLogica
             _context = new EntidadesContainer();
         }
 
-        public IQueryable<DetalleVenta> ObtenerDetallesPorVenta(int ventaId)
-        {
-            return _context.DetalleVentas.Where(dv => dv.VentaId == ventaId);
-        }
+        
 
         public void AgregarDetalleVenta(DetalleVenta detalle)
         {
