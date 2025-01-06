@@ -99,7 +99,7 @@
             this.btnDetalle.Name = "btnDetalle";
             this.btnDetalle.Size = new System.Drawing.Size(250, 40);
             this.btnDetalle.TabIndex = 4;
-            this.btnDetalle.Text = "Detalle de Ventas";
+            this.btnDetalle.Text = "Detalles de Ventas";
             this.btnDetalle.UseVisualStyleBackColor = true;
             this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
