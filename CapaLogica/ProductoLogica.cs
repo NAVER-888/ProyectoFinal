@@ -15,16 +15,70 @@ namespace CapaLogica
         {
             _context = new EntidadesContainer();
         }
-
-        public Producto ObtenerProductoPorId(int id)
+        public List<Producto> ObtenerTodosLosProductos()
         {
-            return _context.Productos.FirstOrDefault(p => p.Id == id);
+            try
+            {
+                return _context.Productos.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los productos.", ex);
+            }
         }
 
-        public void AgregarProducto(Producto producto)
+        public Producto BuscarProductoPorId(int id)
         {
-            _context.Productos.Add(producto);
-            _context.SaveChanges();
+            try
+            {
+                return _context.Productos.FirstOrDefault(p => p.Id == id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar el producto por ID.", ex);
+            }
+        }
+
+        public bool CrearProducto(Producto producto)
+        {
+            try
+            {
+                if (_context.Productos.Any(p => p.nombre == producto.nombre))
+                {
+                    return false; 
+                }
+
+                _context.Productos.Add(producto);
+                _context.SaveChanges();
+                return true; 
+            }
+            catch (Exception)
+            {
+                return false; 
+            }
+        }
+        public bool ActualizarProducto(Producto producto)
+        {
+            try
+            {
+                var productoExistente = _context.Productos.FirstOrDefault(p => p.Id == producto.Id);
+                if (productoExistente == null)
+                {
+                    return false; 
+                }
+
+                productoExistente.nombre = producto.nombre;
+                productoExistente.descripcion = producto.descripcion;
+                productoExistente.precio = producto.precio;
+                productoExistente.stock = producto.stock;
+
+                _context.SaveChanges();
+                return true; 
+            }
+            catch (Exception)
+            {
+                return false; 
+            }
         }
 
         public void EliminarProducto(int id)

@@ -32,17 +32,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,19 +82,19 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Email";
             // 
-            // textBox1
+            // txtNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(237, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtNombre.Location = new System.Drawing.Point(108, 36);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(237, 20);
+            this.txtNombre.TabIndex = 4;
             // 
-            // textBox2
+            // txtDireccion
             // 
-            this.textBox2.Location = new System.Drawing.Point(108, 74);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(237, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtDireccion.Location = new System.Drawing.Point(108, 74);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(237, 20);
+            this.txtDireccion.TabIndex = 5;
             // 
             // textBox3
             // 
@@ -109,84 +110,96 @@
             this.textBox4.Size = new System.Drawing.Size(237, 20);
             this.textBox4.TabIndex = 7;
             // 
+            // dgvClientes
+            // 
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Location = new System.Drawing.Point(24, 209);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.Size = new System.Drawing.Size(543, 229);
+            this.dgvClientes.TabIndex = 29;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(376, 112);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 65;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(452, 143);
+            this.btnSalir.Location = new System.Drawing.Point(475, 112);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 28;
+            this.btnSalir.TabIndex = 64;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(452, 114);
+            this.btnConsultar.Location = new System.Drawing.Point(475, 73);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
-            this.btnConsultar.TabIndex = 27;
+            this.btnConsultar.TabIndex = 63;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(452, 83);
+            this.btnEliminar.Location = new System.Drawing.Point(376, 75);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 26;
+            this.btnEliminar.TabIndex = 62;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(452, 54);
+            this.btnGuardar.Location = new System.Drawing.Point(475, 36);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.TabIndex = 61;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(452, 24);
+            this.btnNuevo.Location = new System.Drawing.Point(376, 38);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevo.TabIndex = 24;
+            this.btnNuevo.TabIndex = 60;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 209);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(543, 229);
-            this.dataGridView1.TabIndex = 29;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmClientes";
-            this.Text = "FrmClientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = "Gestion de Clientes";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,15 +211,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

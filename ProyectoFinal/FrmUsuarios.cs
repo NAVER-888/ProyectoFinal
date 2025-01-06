@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDatos;
 using CapaLogica;
+using Microsoft.VisualBasic;
 
 namespace ProyectoFinal
 {
@@ -77,48 +78,48 @@ namespace ProyectoFinal
                 estado = chkEstado.Checked
             };
 
-            bool resultado;
-            if (dgvUsuarios.SelectedRows.Count > 0) 
-            {
-                usuario.Id = (int)dgvUsuarios.SelectedRows[0].Cells["Id"].Value;
-                resultado = usuarioLogica.ActualizarUsuario(usuario);
-            }
-            else 
-            {
-                resultado = usuarioLogica.CrearUsuario(usuario);
-            }
+            bool resultado = usuarioLogica.CrearUsuario(usuario);
 
             if (resultado)
             {
-                MessageBox.Show("Usuario guardado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario creado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarUsuarios();
                 btnNuevo.PerformClick();
             }
             else
             {
-                MessageBox.Show("Error al guardar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al crear el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Debe seleccionar un usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (dgvUsuarios.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            var idUsuario = (int)dgvUsuarios.SelectedRows[0].Cells["Id"].Value;
-            
+                var idUsuario = (int)dgvUsuarios.SelectedRows[0].Cells["Id"].Value;
+                var confirmResult = MessageBox.Show(
+                        "¿Está seguro de que desea eliminar este producto?",
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
 
-            if (usuarioLogica.EliminarUsuario(idUsuario))
-            {
-                MessageBox.Show("Usuario eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpiar();
+                if (confirmResult == DialogResult.Yes)
+                {
+                    usuarioLogica.EliminarUsuario(idUsuario);
+                
+                    MessageBox.Show("Usuario eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ocurrió un error al eliminar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -126,35 +127,40 @@ namespace ProyectoFinal
         {
             try
             {
-                string nombreBusqueda = txtNombre.Text.Trim();
+                string input = Interaction.InputBox("Ingrese el ID del Usuario:", "Buscar Usuario", "", -1, -1);
 
-                if (string.IsNullOrEmpty(nombreBusqueda))
+                if (string.IsNullOrEmpty(input))
                 {
-                    MessageBox.Show("Por favor, ingrese un nombre para buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, ingrese un ID para buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                var usuarioLogica = new UsuarioLogica();
-                var resultados = usuarioLogica.BuscarUsuariosPorNombre(nombreBusqueda);
-
-                if (resultados.Count > 0)
+                if (int.TryParse(input, out int id))
                 {
-                    dgvUsuarios.DataSource = resultados;
+                    var usuarioLogica = new UsuarioLogica();
+                    var usuario = usuarioLogica.ObtenerUsuarioPorId(id);
 
-                    dgvUsuarios.ClearSelection();
-                    dgvUsuarios.Rows[0].Selected = true;
-                    dgvUsuarios.CurrentCell = dgvUsuarios.Rows[0].Cells[0];
+                    if (usuario != null)
+                    {
+                        dgvUsuarios.DataSource = new List<Usuario> { usuario }; 
+                        dgvUsuarios.ClearSelection();
+                        dgvUsuarios.Rows[0].Selected = true;
+                        dgvUsuarios.CurrentCell = dgvUsuarios.Rows[0].Cells[0];
 
-                    var usuarioSeleccionado = (Usuario)dgvUsuarios.Rows[0].DataBoundItem;
-                    txtNombre.Text = usuarioSeleccionado.nombre;
-                    txtClave.Text = usuarioSeleccionado.clave;
-                    cboRol.SelectedItem = usuarioSeleccionado.rol;
-                    chkEstado.Checked = usuarioSeleccionado.estado;
+                        txtNombre.Text = usuario.nombre;
+                        txtClave.Text = usuario.clave;
+                        cboRol.SelectedItem = usuario.rol;
+                        chkEstado.Checked = usuario.estado;
+                    }
+                    else
+                    {
+                        dgvUsuarios.DataSource = null;
+                        MessageBox.Show("No se encontró ningún usuario con ese ID.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    dgvUsuarios.DataSource = null; 
-                    MessageBox.Show("No se encontraron usuarios con ese nombre.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El ID debe ser un valor numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

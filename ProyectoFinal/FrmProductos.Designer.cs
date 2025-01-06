@@ -28,33 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtStock = new System.Windows.Forms.TextBox();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID de Producto";
             // 
             // label2
             // 
@@ -92,13 +82,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Stock";
             // 
-            // txtCodProducto
-            // 
-            this.txtCodProducto.Location = new System.Drawing.Point(145, 53);
-            this.txtCodProducto.Name = "txtCodProducto";
-            this.txtCodProducto.Size = new System.Drawing.Size(143, 20);
-            this.txtCodProducto.TabIndex = 5;
-            // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(145, 88);
@@ -127,51 +110,6 @@
             this.txtStock.Size = new System.Drawing.Size(130, 20);
             this.txtStock.TabIndex = 9;
             // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(545, 162);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 23;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Location = new System.Drawing.Point(545, 133);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
-            this.btnConsultar.TabIndex = 22;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(545, 102);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 21;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(545, 73);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 20;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(545, 43);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevo.TabIndex = 19;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
             // dgvProductos
             // 
             this.dgvProductos.AllowUserToAddRows = false;
@@ -183,29 +121,88 @@
             this.dgvProductos.Size = new System.Drawing.Size(576, 160);
             this.dgvProductos.TabIndex = 24;
             // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(521, 109);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 59;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(620, 109);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 58;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(620, 70);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
+            this.btnConsultar.TabIndex = 57;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(521, 72);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 56;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(620, 33);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 55;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(521, 35);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 54;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // FrmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 427);
-            this.Controls.Add(this.dgvProductos);
+            this.ClientSize = new System.Drawing.Size(730, 427);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtCodProducto);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "FrmProductos";
-            this.Text = "FrmProductos";
+            this.Text = "Gestion de Productos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -213,22 +210,20 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCodProducto;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.DataGridView dgvProductos;
     }
 }
