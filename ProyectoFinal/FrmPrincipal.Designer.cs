@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.lblRol = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@
             this.iconcerrar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.lblRol = new System.Windows.Forms.Label();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -72,6 +72,28 @@
             this.MenuVertical.Size = new System.Drawing.Size(267, 650);
             this.MenuVertical.TabIndex = 0;
             this.MenuVertical.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuVertical_Paint);
+            // 
+            // lblRol
+            // 
+            this.lblRol.AutoSize = true;
+            this.lblRol.BackColor = System.Drawing.Color.Red;
+            this.lblRol.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.Location = new System.Drawing.Point(29, 512);
+            this.lblRol.Name = "lblRol";
+            this.lblRol.Size = new System.Drawing.Size(71, 24);
+            this.lblRol.TabIndex = 7;
+            this.lblRol.Text = "label1";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.BackColor = System.Drawing.Color.Red;
+            this.lblUsuario.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(29, 428);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(71, 24);
+            this.lblUsuario.TabIndex = 6;
+            this.lblUsuario.Text = "label1";
             // 
             // btnUsuario
             // 
@@ -170,7 +192,7 @@
             // 
             // BarraTitulo
             // 
-            this.BarraTitulo.BackColor = System.Drawing.Color.Lavender;
+            this.BarraTitulo.BackColor = System.Drawing.Color.White;
             this.BarraTitulo.Controls.Add(this.iconminimizar);
             this.BarraTitulo.Controls.Add(this.iconrestaurar);
             this.BarraTitulo.Controls.Add(this.iconmaximizar);
@@ -249,35 +271,14 @@
             // 
             // PanelContenedor
             // 
-            this.PanelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PanelContenedor.BackColor = System.Drawing.Color.Black;
+            this.PanelContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelContenedor.BackgroundImage")));
             this.PanelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.Location = new System.Drawing.Point(267, 50);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Size = new System.Drawing.Size(1033, 600);
             this.PanelContenedor.TabIndex = 2;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.Red;
-            this.lblUsuario.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(29, 428);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(71, 24);
-            this.lblUsuario.TabIndex = 6;
-            this.lblUsuario.Text = "label1";
-            // 
-            // lblRol
-            // 
-            this.lblRol.AutoSize = true;
-            this.lblRol.BackColor = System.Drawing.Color.Red;
-            this.lblRol.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.Location = new System.Drawing.Point(29, 512);
-            this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(71, 24);
-            this.lblRol.TabIndex = 7;
-            this.lblRol.Text = "label1";
             // 
             // FrmPrincipal
             // 

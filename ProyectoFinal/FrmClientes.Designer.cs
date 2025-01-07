@@ -49,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 36);
+            this.label1.Location = new System.Drawing.Point(245, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
@@ -58,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 74);
+            this.label2.Location = new System.Drawing.Point(245, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -67,7 +67,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 109);
+            this.label3.Location = new System.Drawing.Point(245, 189);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
@@ -76,7 +76,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 139);
+            this.label4.Location = new System.Drawing.Point(245, 219);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 3;
@@ -84,28 +84,28 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(108, 36);
+            this.txtNombre.Location = new System.Drawing.Point(332, 116);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(237, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(108, 74);
+            this.txtDireccion.Location = new System.Drawing.Point(332, 154);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(237, 20);
             this.txtDireccion.TabIndex = 5;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(108, 109);
+            this.txtTelefono.Location = new System.Drawing.Point(332, 189);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(237, 20);
             this.txtTelefono.TabIndex = 6;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(108, 139);
+            this.txtEmail.Location = new System.Drawing.Point(332, 219);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(237, 20);
             this.txtEmail.TabIndex = 7;
@@ -115,7 +115,7 @@
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(24, 209);
+            this.dgvClientes.Location = new System.Drawing.Point(248, 289);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.Size = new System.Drawing.Size(543, 229);
@@ -123,7 +123,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(376, 112);
+            this.btnModificar.Location = new System.Drawing.Point(600, 192);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 65;
@@ -133,7 +133,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(475, 112);
+            this.btnSalir.Location = new System.Drawing.Point(699, 192);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 64;
@@ -143,7 +143,7 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(475, 73);
+            this.btnConsultar.Location = new System.Drawing.Point(699, 153);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 63;
@@ -153,7 +153,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(376, 75);
+            this.btnEliminar.Location = new System.Drawing.Point(600, 155);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 62;
@@ -163,7 +163,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(475, 36);
+            this.btnGuardar.Location = new System.Drawing.Point(699, 116);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 61;
@@ -173,7 +173,7 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(376, 38);
+            this.btnNuevo.Location = new System.Drawing.Point(600, 118);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
             this.btnNuevo.TabIndex = 60;
@@ -185,7 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 450);
+            this.ClientSize = new System.Drawing.Size(1029, 566);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnConsultar);
@@ -201,6 +201,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmClientes";
             this.Text = "Gestion de Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
