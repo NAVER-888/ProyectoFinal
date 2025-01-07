@@ -52,11 +52,13 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(187, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 27);
+            this.label1.Size = new System.Drawing.Size(82, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario";
             // 
@@ -64,11 +66,13 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(155, 186);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 27);
+            this.label2.Size = new System.Drawing.Size(116, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña";
             // 
@@ -76,11 +80,13 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(209, 226);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 27);
+            this.label3.Size = new System.Drawing.Size(59, 29);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nivel";
             // 
@@ -88,25 +94,27 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(281, 151);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(182, 20);
+            this.txtNombre.Size = new System.Drawing.Size(206, 20);
             this.txtNombre.TabIndex = 3;
             // 
             // txtClave
             // 
             this.txtClave.Location = new System.Drawing.Point(281, 194);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(182, 20);
+            this.txtClave.Size = new System.Drawing.Size(206, 20);
             this.txtClave.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(193, 265);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 27);
+            this.label4.Size = new System.Drawing.Size(76, 29);
             this.label4.TabIndex = 8;
             this.label4.Text = "Estado";
             // 
@@ -114,11 +122,13 @@
             // 
             this.chkEstado.AutoSize = true;
             this.chkEstado.BackColor = System.Drawing.Color.Transparent;
-            this.chkEstado.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEstado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.chkEstado.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkEstado.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.chkEstado.Location = new System.Drawing.Point(281, 265);
             this.chkEstado.Name = "chkEstado";
-            this.chkEstado.Size = new System.Drawing.Size(88, 31);
+            this.chkEstado.Size = new System.Drawing.Size(86, 31);
             this.chkEstado.TabIndex = 10;
             this.chkEstado.Text = "Activo";
             this.chkEstado.UseVisualStyleBackColor = false;
@@ -229,7 +239,7 @@
             this.cboRol.FormattingEnabled = true;
             this.cboRol.Location = new System.Drawing.Point(281, 230);
             this.cboRol.Name = "cboRol";
-            this.cboRol.Size = new System.Drawing.Size(182, 21);
+            this.cboRol.Size = new System.Drawing.Size(206, 21);
             this.cboRol.TabIndex = 54;
             // 
             // label5
@@ -239,11 +249,11 @@
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label5.Location = new System.Drawing.Point(338, 19);
+            this.label5.Location = new System.Drawing.Point(433, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(348, 45);
+            this.label5.Size = new System.Drawing.Size(152, 45);
             this.label5.TabIndex = 55;
-            this.label5.Text = "Registro De Usuarios";
+            this.label5.Text = "Usuarios";
             // 
             // FrmUsuarios
             // 
@@ -270,6 +280,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmUsuarios";
+            this.Opacity = 0.95D;
             this.Text = "FrmUsuarios";
             this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
