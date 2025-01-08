@@ -69,8 +69,9 @@
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(181, 31);
             this.btnImprimir.TabIndex = 57;
-            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Text = "Generar Reporte";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // label10
             // 

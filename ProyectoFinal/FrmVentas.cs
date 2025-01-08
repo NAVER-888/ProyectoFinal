@@ -501,5 +501,11 @@ namespace ProyectoFinal
                 MessageBox.Show($"Ocurrió un error al consultar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            FrmReportVentas reporte = new FrmReportVentas();
+            reporte.ShowDialog();
+        }
     }
 }

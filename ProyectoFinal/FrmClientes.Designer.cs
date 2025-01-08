@@ -45,6 +45,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnReporteCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +143,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
             this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificar.Location = new System.Drawing.Point(579, 229);
+            this.btnModificar.Location = new System.Drawing.Point(581, 210);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(152, 39);
             this.btnModificar.TabIndex = 59;
@@ -156,7 +157,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(751, 229);
+            this.btnSalir.Location = new System.Drawing.Point(753, 210);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(152, 39);
             this.btnSalir.TabIndex = 58;
@@ -170,7 +171,7 @@
             this.btnConsultar.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar.Image")));
             this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultar.Location = new System.Drawing.Point(751, 177);
+            this.btnConsultar.Location = new System.Drawing.Point(753, 158);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(152, 39);
             this.btnConsultar.TabIndex = 57;
@@ -184,7 +185,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(579, 177);
+            this.btnEliminar.Location = new System.Drawing.Point(581, 158);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(152, 39);
             this.btnEliminar.TabIndex = 56;
@@ -198,7 +199,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(751, 132);
+            this.btnGuardar.Location = new System.Drawing.Point(753, 113);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(152, 39);
             this.btnGuardar.TabIndex = 55;
@@ -212,7 +213,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(579, 132);
+            this.btnNuevo.Location = new System.Drawing.Point(581, 113);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(152, 39);
             this.btnNuevo.TabIndex = 54;
@@ -232,12 +233,30 @@
             this.label5.TabIndex = 60;
             this.label5.Text = "Clientes";
             // 
+            // btnReporteCliente
+            // 
+            this.btnReporteCliente.FlatAppearance.BorderSize = 0;
+            this.btnReporteCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnReporteCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteCliente.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteCliente.ForeColor = System.Drawing.Color.Black;
+            this.btnReporteCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnReporteCliente.Image")));
+            this.btnReporteCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporteCliente.Location = new System.Drawing.Point(606, 256);
+            this.btnReporteCliente.Name = "btnReporteCliente";
+            this.btnReporteCliente.Size = new System.Drawing.Size(250, 40);
+            this.btnReporteCliente.TabIndex = 61;
+            this.btnReporteCliente.Text = "Generar Reporte";
+            this.btnReporteCliente.UseVisualStyleBackColor = true;
+            this.btnReporteCliente.Click += new System.EventHandler(this.btnReporteCliente_Click);
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1029, 566);
+            this.Controls.Add(this.btnReporteCliente);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnSalir);
@@ -282,5 +301,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnReporteCliente;
     }
 }

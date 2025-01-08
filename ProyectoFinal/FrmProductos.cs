@@ -232,5 +232,11 @@ namespace ProyectoFinal
         {
             this.Hide();
         }
+
+        private void btnReporteCliente_Click(object sender, EventArgs e)
+        {
+            FrmReportProductos reporte = new FrmReportProductos();
+            reporte.ShowDialog();
+        }
     }
 }
