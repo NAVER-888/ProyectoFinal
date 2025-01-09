@@ -18,6 +18,7 @@ namespace ProyectoFinal
         private ClienteLogica clienteLogica;
         private ProductoLogica productoLogica;
         private List<DetalleVenta> detalles = new List<DetalleVenta>();
+        private List<object> detallesView = new List<object>();
         private VentaLogica ventaLogica;
         public FrmVentas()
         {
@@ -25,87 +26,108 @@ namespace ProyectoFinal
             clienteLogica = new ClienteLogica();
             productoLogica = new ProductoLogica();
             ventaLogica = new VentaLogica();
+            detalles = new List<DetalleVenta>();
+            ConsultarVentas();
         }
 
         private void FrmVentas_Load(object sender, EventArgs e)
         {
             CargarProductos();
             CargarClientes();
-            detalles = new List<DetalleVenta>();
+            var detalles = ventaLogica.ObtenerDetalleVentas();  
+            dgvVentas.DataSource = detalles;
         }
-        private void InicializarColumnas(bool esListaGeneral)
+        
+        private void InicializarColumnas()
         {
-            dgvVentas.Columns.Clear(); 
+           
+            dgvVentas.Columns.Clear();
 
-            if (esListaGeneral)
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
             {
-                // Configurar columnas para la lista general
-                dgvVentas.Columns.Add("Id", "Id");
-                dgvVentas.Columns.Add("Cliente", "Cliente");
-                dgvVentas.Columns.Add("Fecha", "Fecha");
-                dgvVentas.Columns.Add("Total", "Total");
-            }
-            else
-            {
-                // Configurar columnas para agregar/editar ítem
-                dgvVentas.Columns.Add("Producto", "Producto");
-                dgvVentas.Columns.Add("Precio", "Precio");
-                dgvVentas.Columns.Add("Cantidad", "Cantidad");
-                dgvVentas.Columns.Add("Subtotal", "Subtotal");
+                Name = "ProductoId",
+                HeaderText = "Producto ID",  
+                DataPropertyName = "ProductoId", 
+                Visible = false, 
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
 
-                // Ajustar el formato de las columnas de Precio y Subtotal a un formato numérico
-                dgvVentas.Columns["Precio"].DefaultCellStyle.Format = "0.00";
-                dgvVentas.Columns["Subtotal"].DefaultCellStyle.Format = "0.00";
-            }
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "VentaId",
+                HeaderText = "ID Venta",
+                DataPropertyName = "VentaId", 
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Cliente",
+                HeaderText = "Cliente",   
+                DataPropertyName = "Cliente",  
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Producto",
+                HeaderText = "Producto",
+                DataPropertyName = "Producto",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Descripcion",
+                HeaderText = "Descripcion",
+                DataPropertyName = "descripcion", 
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Precio",
+                HeaderText = "Precio",
+                DataPropertyName = "precio", 
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }, 
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Cantidad",
+                HeaderText = "Cantidad",
+                DataPropertyName = "cantidad", 
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Subtotal",
+                HeaderText = "Subtotal",
+                DataPropertyName = "subtotal", 
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }, 
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
         }
         private void ConsultarVentas()
         {
             try
             {
-                List<Venta> ventas = ventaLogica.ObtenerTodasLasVentas();
-                InicializarColumnas(true);
+                InicializarColumnas();
+                var ventas = ventaLogica.ObtenerDetalleVentas();
 
-                dgvVentas.DataSource = ventas;  
-
+                dgvVentas.AutoGenerateColumns = false;
+                dgvVentas.DataSource = ventas;
                 dgvVentas.ClearSelection();
+                ActualizarTotal();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error al consultar las ventas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void MostrarVenta(Venta venta)
-        {
-            try
-            {
-                if (venta == null)
-                {
-                    MessageBox.Show("La venta no existe o los datos no se pudieron cargar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
 
-                List<Cliente> clientes = clienteLogica.ObtenerTodosLosClientes(); // Obtener la lista de clientes
-
-                Cliente clienteSeleccionado = clientes.FirstOrDefault(c => c.Id == venta.ClienteId);
-                if (clienteSeleccionado != null)
-                {
-                    cboCliente.SelectedItem = clienteSeleccionado; 
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró el cliente asociado a esta venta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                dtpFecha.Value = venta.fecha;
-
-                txtTotal.Text = venta.total.ToString("C"); 
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al mostrar los datos de la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void LimpiarControles()
         {
             try
@@ -120,6 +142,10 @@ namespace ProyectoFinal
                 dgvVentas.ClearSelection(); 
 
                 dgvVentas.ClearSelection();
+                detallesView.Clear();
+
+                ConsultarVentas();
+                ActualizarTotal();
 
             }
             catch (Exception ex)
@@ -187,12 +213,12 @@ namespace ProyectoFinal
                 MessageBox.Show($"Ocurrió un error al cargar el precio del producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void txtUnidades_TextChanged(object sender, EventArgs e)
+        private void ActualizarSubtotal()
         {
             try
             {
                 if (decimal.TryParse(txtPrecio.Text.Trim(), out decimal precio) &&
-                    int.TryParse(txtUnidades.Text.Trim(), out int cantidad))
+                    int.TryParse(txtUnidades.Text.Trim(), out int cantidad) && cantidad >= 0)
                 {
                     decimal subtotal = precio * cantidad;
                     txtSubtotal.Text = subtotal.ToString("0.00");
@@ -205,6 +231,40 @@ namespace ProyectoFinal
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error al calcular el subtotal: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarSubtotal();
+        }
+        private void txtUnidades_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarSubtotal();
+        }
+        private void ActualizarTotal()
+        {
+            try
+            {
+                decimal total = 0;
+
+                foreach (DataGridViewRow row in dgvVentas.Rows)
+                {
+                    if (row.Cells["Subtotal"].Value != null)
+                    {
+                        total += Convert.ToDecimal(row.Cells["Subtotal"].Value); 
+                    }
+                }
+
+                decimal igv = total * 0.18m;
+                decimal neto = total + igv;
+
+                txtTotal.Text = total.ToString("F2");
+                txtIGV.Text = igv.ToString("F2");  
+                txtNeto.Text = neto.ToString("F2"); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al actualizar los totales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void CalcularTotales()
@@ -237,35 +297,7 @@ namespace ProyectoFinal
                 MessageBox.Show($"Ocurrió un error al calcular los totales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void ActualizarDataGridView()
-        {
-            try
-            {
-                dgvVentas.Rows.Clear();
-
-                foreach (var detalle in detalles)
-                {
-                    Producto productoSeleccionado = productoLogica.BuscarProductoPorId(detalle.ProductoId);
-
-                    dgvVentas.Rows.Add(
-                        productoSeleccionado.nombre, 
-                        productoSeleccionado.precio.ToString("0.00"), 
-                        detalle.cantidad, 
-                        detalle.subtotal.ToString("0.00") 
-                    );
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al actualizar el DataGridView: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            LimpiarControles();
-        }
-
+     
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -284,6 +316,7 @@ namespace ProyectoFinal
 
                 Producto productoSeleccionado = (Producto)cboProducto.SelectedItem;
                 decimal precio = productoSeleccionado.precio;
+                Cliente clienteSeleccionado = (Cliente)cboCliente.SelectedItem;
 
                 DetalleVenta detalle = new DetalleVenta
                 {
@@ -293,15 +326,36 @@ namespace ProyectoFinal
                 };
 
                 detalles.Add(detalle);
-                InicializarColumnas(false);
-                ActualizarDataGridView();
+
+                var detalleAnonimo = new
+                {
+                    ProductoId = productoSeleccionado.Id,
+                    Producto = productoSeleccionado.nombre,
+                    Descripcion = productoSeleccionado.descripcion,
+                    Precio = precio,
+                    Cantidad = unidades,
+                    Subtotal = precio * (decimal)unidades,
+                    Cliente = clienteSeleccionado?.nombre ?? "Sin Cliente"
+                    
+            };
+
+                detallesView.Add(detalleAnonimo);
+
+                dgvVentas.DataSource = null;  
+                dgvVentas.DataSource = detallesView;  
+
+                if (dgvVentas.Columns["VentaId"] != null)
+                {
+                    dgvVentas.Columns["VentaId"].Visible = false;
+                }
+
                 CalcularTotales();
+                ActualizarTotal();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error al agregar el ítem: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
@@ -314,13 +368,32 @@ namespace ProyectoFinal
 
             foreach (DataGridViewRow row in dgvVentas.SelectedRows)
             {
-                dgvVentas.Rows.Remove(row);
+                var productoId = (int)row.Cells[0].Value; 
+
+                var detalleAEliminar = detalles.FirstOrDefault(d => d.ProductoId == productoId);
+
+                if (detalleAEliminar != null)
+                {
+                    detalles.Remove(detalleAEliminar);
+                }
+
+                detallesView.RemoveAt(row.Index);
             }
 
+            dgvVentas.DataSource = null;
+            dgvVentas.DataSource = detallesView;
+
             CalcularTotales();
+            ActualizarTotal();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            FrmReportVentas reporte = new FrmReportVentas();
+            reporte.ShowDialog();
+        }
+
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -348,7 +421,8 @@ namespace ProyectoFinal
                 if (ventaGuardada)
                 {
                     MessageBox.Show("Venta registrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnNuevo.PerformClick(); 
+                    detallesView.Clear();
+                    btnNuevo.PerformClick();
                 }
                 else
                 {
@@ -360,92 +434,82 @@ namespace ProyectoFinal
                 MessageBox.Show($"Ocurrió un error al guardar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Ingrese el ID de la venta:", "Buscar Venta", "", -1, -1);
-
-                if (!string.IsNullOrWhiteSpace(input))
-                {
-                    if (int.TryParse(input.Trim(), out int ventaId))
-                    {
-                        var venta = ventaLogica.ObtenerVentaPorId(ventaId);
-
-                        if (venta != null)
-                        {
-                            List<Cliente> clientes = clienteLogica.ObtenerTodosLosClientes(); 
-                            Cliente clienteSeleccionado = clientes.FirstOrDefault(c => c.Id == venta.ClienteId);
-                            if (clienteSeleccionado != null)
-                            {
-                                cboCliente.SelectedItem = clienteSeleccionado;  
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se encontró el cliente asociado a esta venta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-
-                            dtpFecha.Value = venta.fecha;
-
-                            txtTotal.Text = venta.total.ToString("C"); 
-     
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró ninguna venta con ese ID.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("El ID debe ser un valor numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Debe ingresar un ID de venta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al buscar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (dgvVentas.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Debe seleccionar una venta para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Debe seleccionar un ítem para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                int ventaId = (int)dgvVentas.SelectedRows[0].Cells["Id"].Value;
+                var filaSeleccionada = dgvVentas.SelectedRows[0];
+                int productoId = (int)filaSeleccionada.Cells["ProductoId"].Value;
+                int cantidad = (int)filaSeleccionada.Cells["Cantidad"].Value; 
+                string ventaIdStr = filaSeleccionada.Cells["VentaId"].Value?.ToString();
 
-                DialogResult dialogResult = MessageBox.Show("¿Está seguro de que desea eliminar esta venta?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (ventaIdStr == "N/A" || string.IsNullOrEmpty(ventaIdStr))
                 {
-                    bool ventaEliminada = ventaLogica.EliminarVenta(ventaId);
+                    MessageBox.Show("El ítem no pertenece a una venta guardada. Use el botón Quitar si aún no se ha guardado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    if (ventaEliminada)
+                int ventaId = int.Parse(ventaIdStr); 
+
+                VentaLogica logica = new VentaLogica();
+                bool eliminado = logica.EliminarDetalleVenta(ventaId, productoId, cantidad);
+
+                if (eliminado)
+                {
+                    var detalleAEliminar = detalles.FirstOrDefault(d => d.VentaId == ventaId && d.ProductoId == productoId);
+                    if (detalleAEliminar != null)
                     {
-                        MessageBox.Show("Venta eliminada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        detalles.Remove(detalleAEliminar); 
+                    }
 
-                        LimpiarControles(); 
+                    decimal totalActualizado = detalles
+                        .Where(d => d.VentaId == ventaId)
+                        .Sum(d => d.subtotal); 
 
-                        ConsultarVentas(); 
+                    if (totalActualizado == 0)
+                    {
+                        bool ventaEliminada = logica.EliminarVenta(ventaId); 
+
+                        if (ventaEliminada)
+                        {
+                            detalles.RemoveAll(d => d.VentaId == ventaId); 
+                            MessageBox.Show("La venta fue eliminada completamente ya que no tiene más detalles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al intentar eliminar la venta con total 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Error al eliminar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        bool actualizado = logica.ActualizarTotalVenta(ventaId, totalActualizado);
+
+                        if (!actualizado)
+                        {
+                            MessageBox.Show("Ocurrió un error al actualizar el total de la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+
+                    dgvVentas.DataSource = null;  
+                    dgvVentas.DataSource = detalles;  
+
+                    CalcularTotales();
+                    btnNuevo.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al eliminar el ítem.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error al eliminar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ocurrió un error al eliminar el ítem: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -464,29 +528,21 @@ namespace ProyectoFinal
                 if (int.TryParse(input, out int id))
                 {
                     var ventaLogica = new VentaLogica();
-                    var venta = ventaLogica.ObtenerVentaPorId(id); 
+                    var detalles = ventaLogica.ConsultarVentas(id);
 
-                    if (venta != null)
+                    if (detalles.Any())
                     {
-                        dgvVentas.DataSource = new List<Venta> { venta };
+                        dgvVentas.DataSource = detalles;
                         dgvVentas.ClearSelection();
-                        dgvVentas.Rows[0].Selected = true;
-                        dgvVentas.CurrentCell = dgvVentas.Rows[0].Cells[0];
+                        InicializarColumnas();
 
-                        dtpFecha.Text = venta.fecha.ToString("dd/MM/yyyy");
-                        txtTotal.Text = venta.total.ToString("C"); 
-                        var cliente = clienteLogica.ObtenerClientePorId(venta.ClienteId);
-                        cboCliente.SelectedItem = cliente; 
+                        dgvVentas.Columns.Remove("ProductoId");
+                        ActualizarTotal();
 
-                        
-                        var detallesVenta = ventaLogica.ObtenerDetallesPorVenta(id).ToList(); 
-                        dgvVentas.DataSource = detallesVenta; 
-                        dgvVentas.ClearSelection();
+                        MessageBox.Show("Venta consultada correctamente.");
                     }
                     else
                     {
-                    
-                        dgvVentas.DataSource = null;
                         dgvVentas.DataSource = null;
                         MessageBox.Show("No se encontró ninguna venta con ese ID.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -502,10 +558,15 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmReportVentas reporte = new FrmReportVentas();
-            reporte.ShowDialog();
+            LimpiarControles();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+        
     }
 }

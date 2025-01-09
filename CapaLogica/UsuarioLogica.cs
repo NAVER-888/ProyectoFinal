@@ -19,7 +19,9 @@ namespace CapaLogica
 
         public Usuario ValidarUsuario(string nombre, string clave)
         {
-            return _context.Usuarios.FirstOrDefault(u => u.nombre == nombre && u.clave == clave && u.estado);
+            return _context.Usuarios
+                           .Where(u => u.nombre == nombre && u.clave == clave && u.estado)
+                           .SingleOrDefault();
         }
 
         public List<Usuario> ObtenerUsuarios()
