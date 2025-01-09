@@ -45,6 +45,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.chkMostrar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +104,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(206, 20);
             this.txtClave.TabIndex = 4;
+            this.txtClave.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -123,15 +125,15 @@
             this.chkEstado.AutoSize = true;
             this.chkEstado.BackColor = System.Drawing.Color.Transparent;
             this.chkEstado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.chkEstado.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.chkEstado.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.chkEstado.Location = new System.Drawing.Point(281, 265);
             this.chkEstado.Name = "chkEstado";
-            this.chkEstado.Size = new System.Drawing.Size(86, 31);
+            this.chkEstado.Size = new System.Drawing.Size(88, 31);
             this.chkEstado.TabIndex = 10;
             this.chkEstado.Text = "Activo";
             this.chkEstado.UseVisualStyleBackColor = false;
+            this.chkEstado.CheckedChanged += new System.EventHandler(this.chkEstado_CheckedChanged);
             // 
             // dgvUsuarios
             // 
@@ -255,6 +257,21 @@
             this.label5.TabIndex = 55;
             this.label5.Text = "Usuarios";
             // 
+            // chkMostrar
+            // 
+            this.chkMostrar.AutoSize = true;
+            this.chkMostrar.BackColor = System.Drawing.Color.Transparent;
+            this.chkMostrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.chkMostrar.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMostrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.chkMostrar.Location = new System.Drawing.Point(508, 185);
+            this.chkMostrar.Name = "chkMostrar";
+            this.chkMostrar.Size = new System.Drawing.Size(105, 31);
+            this.chkMostrar.TabIndex = 56;
+            this.chkMostrar.Text = "Mostrar";
+            this.chkMostrar.UseVisualStyleBackColor = false;
+            this.chkMostrar.CheckedChanged += new System.EventHandler(this.chkMostrarClave_CheckedChanged);
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,6 +279,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1029, 566);
+            this.Controls.Add(this.chkMostrar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cboRol);
             this.Controls.Add(this.btnModificar);
@@ -307,5 +325,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkMostrar;
     }
 }

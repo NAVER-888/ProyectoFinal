@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkMostrar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,10 +69,11 @@
             this.txtClave.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.txtClave.Location = new System.Drawing.Point(181, 297);
             this.txtClave.Name = "txtClave";
-            this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(182, 13);
             this.txtClave.TabIndex = 11;
             this.txtClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtClave.UseSystemPasswordChar = true;
+            this.txtClave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClave_KeyDown);
             // 
             // label2
             // 
@@ -95,6 +97,7 @@
             this.txtNombre.Size = new System.Drawing.Size(182, 13);
             this.txtNombre.TabIndex = 9;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
             // 
             // label1
             // 
@@ -131,6 +134,20 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Iniciar Sesion";
             // 
+            // chkMostrar
+            // 
+            this.chkMostrar.AutoSize = true;
+            this.chkMostrar.BackColor = System.Drawing.Color.Transparent;
+            this.chkMostrar.Font = new System.Drawing.Font("Franklin Gothic Heavy", 9.75F);
+            this.chkMostrar.ForeColor = System.Drawing.Color.White;
+            this.chkMostrar.Location = new System.Drawing.Point(231, 326);
+            this.chkMostrar.Name = "chkMostrar";
+            this.chkMostrar.Size = new System.Drawing.Size(76, 21);
+            this.chkMostrar.TabIndex = 20;
+            this.chkMostrar.Text = "Mostrar";
+            this.chkMostrar.UseVisualStyleBackColor = false;
+            this.chkMostrar.CheckedChanged += new System.EventHandler(this.chkMostrarClave_CheckedChanged);
+            // 
             // FrmAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,7 +155,8 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(413, 416);
+            this.ClientSize = new System.Drawing.Size(456, 416);
+            this.Controls.Add(this.chkMostrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancelar);
@@ -150,7 +168,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmAcceso";
             this.Opacity = 0.9D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmAcceso_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormAcceso_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,5 +187,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkMostrar;
     }
 }

@@ -19,12 +19,44 @@ namespace ProyectoFinal
         public FrmClientes()
         {
             InitializeComponent();
+            ConfigurarDgv();
+            ConfigurarTextos();
             clienteLogica = new ClienteLogica();
-            ConsultarClientes();
+            ConsultarClientes(); 
+        }
+        private void ConfigurarDgv()
+        {
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.DefaultCellStyle.Font = new Font("Verdana", 10, FontStyle.Regular);
+            dgvClientes.DefaultCellStyle.ForeColor = Color.Black; 
+            dgvClientes.DefaultCellStyle.BackColor = Color.White; 
+            dgvClientes.DefaultCellStyle.SelectionForeColor = Color.White; 
+            dgvClientes.DefaultCellStyle.SelectionBackColor = Color.Blue; 
+
+            dgvClientes.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
+            dgvClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; 
+            dgvClientes.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue; 
+            dgvClientes.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvClientes.GridColor = Color.LightGray; 
+
+            dgvClientes.ColumnHeadersHeight = 35;
+            dgvClientes.RowTemplate.Height = 30;
+        }
+        private void ConfigurarTextos()
+        {
+            Font fuentePersonalizada = new Font("Arial", 12, FontStyle.Bold);
+
+            txtNombre.Font = fuentePersonalizada;
+            txtDireccion.Font = fuentePersonalizada;
+            txtTelefono.Font = fuentePersonalizada;
+            txtEmail.Font = fuentePersonalizada;
         }
         private void ConsultarClientes()
         {
             dgvClientes.DataSource = clienteLogica.ObtenerTodosLosClientes();
+            dgvClientes.Columns["Venta"].Visible = false;
         }
         private void SeleccionarFilaCliente(int clienteId)
         {
@@ -54,16 +86,22 @@ namespace ProyectoFinal
             ConsultarClientes();
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void btnReporteCliente_Click(object sender, EventArgs e)
+        {
+            FrmReportCliente reporte = new FrmReportCliente();
+            reporte.ShowDialog();
+        }
+
+        private void btnNuevo_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtTelefono.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("Debe completar los campos Nombre y Teléfono.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe completar el Nombre.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -91,7 +129,40 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvClientes.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int clienteId = (int)dgvClientes.SelectedRows[0].Cells["Id"].Value;
+
+                var confirmResult = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar este cliente?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    clienteLogica.EliminarCliente(clienteId);
+
+                    MessageBox.Show("Cliente eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarCampos();
+                    ConsultarClientes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al eliminar el cliente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnConsultar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -136,40 +207,7 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvClientes.SelectedRows.Count == 0)
-                {
-                    MessageBox.Show("Debe seleccionar un cliente para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                int clienteId = (int)dgvClientes.SelectedRows[0].Cells["Id"].Value;
-
-                var confirmResult = MessageBox.Show(
-                    "¿Está seguro de que desea eliminar este cliente?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    clienteLogica.EliminarCliente(clienteId);
-
-                    MessageBox.Show("Cliente eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCampos();
-                    ConsultarClientes();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al eliminar el cliente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnModificar_Click_1(object sender, EventArgs e)
         {
             if (dgvClientes.SelectedRows.Count == 0)
             {
@@ -210,15 +248,9 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void btnReporteCliente_Click(object sender, EventArgs e)
-        {
-            FrmReportCliente reporte = new FrmReportCliente();
-            reporte.ShowDialog();
         }
     }
 }

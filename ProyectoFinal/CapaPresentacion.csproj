@@ -91,6 +91,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDProyectoFinalCliente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDProyectoFinalCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BDProyectoFinalProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDProyectoFinalProductos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BDProyectoFinalVentas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDProyectoFinalVentas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FrmAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +219,39 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Ventas.rdlc" />
+    <None Include="BDProyectoFinalCliente.xsc">
+      <DependentUpon>BDProyectoFinalCliente.xsd</DependentUpon>
+    </None>
+    <None Include="BDProyectoFinalCliente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDProyectoFinalCliente.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDProyectoFinalCliente.xss">
+      <DependentUpon>BDProyectoFinalCliente.xsd</DependentUpon>
+    </None>
+    <None Include="BDProyectoFinalProductos.xsc">
+      <DependentUpon>BDProyectoFinalProductos.xsd</DependentUpon>
+    </None>
+    <None Include="BDProyectoFinalProductos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDProyectoFinalProductos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDProyectoFinalProductos.xss">
+      <DependentUpon>BDProyectoFinalProductos.xsd</DependentUpon>
+    </None>
+    <None Include="BDProyectoFinalVentas.xsc">
+      <DependentUpon>BDProyectoFinalVentas.xsd</DependentUpon>
+    </None>
+    <None Include="BDProyectoFinalVentas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDProyectoFinalVentas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDProyectoFinalVentas.xss">
+      <DependentUpon>BDProyectoFinalVentas.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CapaDatos.Cliente.datasource" />
     <None Include="Properties\DataSources\CapaDatos.DetalleVenta.datasource" />

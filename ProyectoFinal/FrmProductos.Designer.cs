@@ -159,6 +159,7 @@
             this.btnModificar.TabIndex = 59;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click_1);
             // 
             // btnSalir
             // 
@@ -173,6 +174,7 @@
             this.btnSalir.TabIndex = 58;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // btnConsultar
             // 
@@ -187,6 +189,7 @@
             this.btnConsultar.TabIndex = 57;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click_1);
             // 
             // btnEliminar
             // 
@@ -201,6 +204,7 @@
             this.btnEliminar.TabIndex = 56;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
             // btnGuardar
             // 
@@ -215,6 +219,7 @@
             this.btnGuardar.TabIndex = 55;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
             // btnNuevo
             // 
@@ -229,6 +234,7 @@
             this.btnNuevo.TabIndex = 54;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
             // 
             // label1
             // 

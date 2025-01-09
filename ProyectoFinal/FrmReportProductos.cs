@@ -19,6 +19,8 @@ namespace ProyectoFinal
 
         private void FrmReportProductos_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'bDProyectoFinalProductos.Productos' Puede moverla o quitarla según sea necesario.
+            this.productosTableAdapter.Fill(this.bDProyectoFinalProductos.Productos);
 
             this.reportViewer1.RefreshReport();
         }

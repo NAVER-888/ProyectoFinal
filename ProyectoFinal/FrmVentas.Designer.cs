@@ -161,9 +161,9 @@
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(781, 75);
+            this.dtpFecha.Location = new System.Drawing.Point(664, 77);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(201, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(323, 20);
             this.dtpFecha.TabIndex = 42;
             // 
             // label7
@@ -172,7 +172,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Lime;
-            this.label7.Location = new System.Drawing.Point(694, 68);
+            this.label7.Location = new System.Drawing.Point(577, 70);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 27);
             this.label7.TabIndex = 41;

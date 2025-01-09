@@ -30,16 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ventaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.bDProyectoFinalVentas = new ProyectoFinal.BDProyectoFinalVentas();
+            this.detalleVentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.detalleVentasTableAdapter = new ProyectoFinal.BDProyectoFinalVentasTableAdapters.DetalleVentasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDProyectoFinalVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleVentasBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ventaBindingSource
+            // 
+            this.ventaBindingSource.DataSource = typeof(CapaDatos.Venta);
+            this.ventaBindingSource.CurrentChanged += new System.EventHandler(this.ventaBindingSource_CurrentChanged);
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "VentasDataSet";
-            reportDataSource1.Value = this.ventaBindingSource;
+            reportDataSource1.Value = this.detalleVentasBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "ProyectoFinal.Ventas.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
@@ -48,9 +58,19 @@
             this.reportViewer1.Size = new System.Drawing.Size(1182, 578);
             this.reportViewer1.TabIndex = 0;
             // 
-            // ventaBindingSource
+            // bDProyectoFinalVentas
             // 
-            this.ventaBindingSource.DataSource = typeof(CapaDatos.Venta);
+            this.bDProyectoFinalVentas.DataSetName = "BDProyectoFinalVentas";
+            this.bDProyectoFinalVentas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // detalleVentasBindingSource
+            // 
+            this.detalleVentasBindingSource.DataMember = "DetalleVentas";
+            this.detalleVentasBindingSource.DataSource = this.bDProyectoFinalVentas;
+            // 
+            // detalleVentasTableAdapter
+            // 
+            this.detalleVentasTableAdapter.ClearBeforeFill = true;
             // 
             // FrmReportVentas
             // 
@@ -62,6 +82,8 @@
             this.Text = "FrmReportVentas";
             this.Load += new System.EventHandler(this.FrmReportVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDProyectoFinalVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleVentasBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -70,5 +92,8 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource ventaBindingSource;
+        private BDProyectoFinalVentas bDProyectoFinalVentas;
+        private System.Windows.Forms.BindingSource detalleVentasBindingSource;
+        private BDProyectoFinalVentasTableAdapters.DetalleVentasTableAdapter detalleVentasTableAdapter;
     }
 }

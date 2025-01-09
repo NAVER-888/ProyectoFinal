@@ -121,7 +121,7 @@
   <data name="btnImprimir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAZdJREFUSEvllb8rhlEUxz9FimJikIx2JUUpA6tSbCiTyST/ABYZJMqPgQWFYsCg
+        DQAACw0B7QfALAAAAZdJREFUSEvllb8rhlEUxz9FimJikIx2JUUpA6tSbCiTyST/ABYZJMqPgQWFYsCg
         KKNCKcouKYQBo199dd6323nf5+m+3tGnznDO/Z5z7nOf+wP+AxXAEnALvKSYxheBcl8ghgngC9gDtlJs
         33RjvkAMO8CJDyYg3bYPplEDtAPdQA/QGWHSSa+8al8wpASYs0//LsKUP2v1chg10TLQlWe2Maa8Fasz
         4huIc+DMBwugznakUK1TN/7LI7Dug5E02+y104TqqF4O00CfD0ZSBgwCTeavJTWpBEp98I8kNrkGZnzw
@@ -134,7 +134,7 @@
   <data name="btnQuitar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAkdJREFUSEvN1UnoTn0UB/APZSZjpsgYUmYhkZB5JjPvK7EQWZhDyJCht1iwIJSV
+        DQAACw0B7QfALAAAAkdJREFUSEvN1UnoTn0UB/APZSZjpsgYUmYhkZB5JjPvK7EQWZhDyJCht1iwIJSV
         bJAybFEWLCxkifKGlJSIIkOnzlO3Jzz3n41v3e65z33u+Z7h+zuHvxz9sBytsBknqv9QVzTLe2fMwHAc
         xzo8w3asQbeq70pjKG5iD/ZjJJagKc5hESbjH/Sp/rgWFuIJXqMjjmA8NuEQtuBf/IdLeJiEpdEEb7Gj
         8GFDLEC7fN6HvriYGU7BnYKPmmiBr3iJg1iMgeiJTmidjT6NF7iCj3hU7eh3aJuZzMGDLNv/eJ/kn/AB
@@ -150,7 +150,7 @@
   <data name="btnAgregar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAe5JREFUSEvtlb9LVXEYxj8RFmoJZUiDYDWE0lAYiJuDIJGhogbtYUM4SARRLdkU
+        DQAACw0B7QfALAAAAe5JREFUSEvtlb9LVXEYxj8RFmoJZUiDYDWE0lAYiJuDIJGhogbtYUM4SARRLdkU
         BA6SpYOjDZGDQX9AKCiIuJn9UKhZKCgHpV888pzLue8dzj1cuFMPvHCe7/vjOd/3+wv+owKcAeaAD8BW
         hn0GBoB6YNVjm85viYUTKHgb2AXeAK/KsE6gBpgxV57yJah6JegF/gKD0ZETQ66jeiUYsfNCdOSE8lVH
         9UqQiLwD3lZgys8U+QJ8qsCUnylSlXYlIteAaeCG+WVz7aRoz4GrjsslMgX8AebNR80VE+0X8MxxuUTy

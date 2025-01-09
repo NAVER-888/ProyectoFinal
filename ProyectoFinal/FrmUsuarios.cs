@@ -19,11 +19,40 @@ namespace ProyectoFinal
         public FrmUsuarios()
         {
             InitializeComponent();
+            ConfigurarDgv();
+            ConfigurarTextos();
             usuarioLogica = new UsuarioLogica();
             CargarRoles();
             ConsultarUsuarios();
         }
+        private void ConfigurarDgv()
+        {
+            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsuarios.DefaultCellStyle.Font = new Font("Verdana", 10, FontStyle.Regular);
+            dgvUsuarios.DefaultCellStyle.ForeColor = Color.Black;
+            dgvUsuarios.DefaultCellStyle.BackColor = Color.White;
+            dgvUsuarios.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvUsuarios.DefaultCellStyle.SelectionBackColor = Color.Blue;
 
+            dgvUsuarios.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
+            dgvUsuarios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue;
+            dgvUsuarios.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvUsuarios.GridColor = Color.LightGray;
+
+            dgvUsuarios.ColumnHeadersHeight = 35;
+            dgvUsuarios.RowTemplate.Height = 30;
+        }
+        private void ConfigurarTextos()
+        {
+            Font fuentePersonalizada = new Font("Arial", 12, FontStyle.Bold);
+
+            txtNombre.Font = fuentePersonalizada;
+            txtClave.Font = fuentePersonalizada;
+            cboRol.Font = fuentePersonalizada;
+        }
         private void CargarRoles()
         {
             cboRol.Items.Add("Seleccionar");
@@ -35,6 +64,19 @@ namespace ProyectoFinal
         {
             var usuarios = usuarioLogica.ObtenerUsuarios();
             dgvUsuarios.DataSource = usuarios;
+            dgvUsuarios.Columns["clave"].Visible = false;
+            if (dgvUsuarios.Columns["nombre"] != null)
+            {
+                dgvUsuarios.Columns["nombre"].HeaderText = "Usuario"; 
+            }
+            if (dgvUsuarios.Columns["rol"] != null)
+            {
+                dgvUsuarios.Columns["rol"].HeaderText = "Nivel"; 
+            }
+            if (dgvUsuarios.Columns["estado"] != null)
+            {
+                dgvUsuarios.Columns["estado"].HeaderText = "Estado"; 
+            }
         }
 
         private void dgvUsuarios_SelectionChanged(object sender, EventArgs e)
@@ -56,6 +98,10 @@ namespace ProyectoFinal
             chkEstado.Checked = true;
             txtNombre.Focus();
             ConsultarUsuarios();
+        }
+        private void chkMostrarClave_CheckedChanged(object sender, EventArgs e)
+        {
+            txtClave.UseSystemPasswordChar = !chkMostrar.Checked;
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -216,6 +262,11 @@ namespace ProyectoFinal
         }
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkEstado_CheckedChanged(object sender, EventArgs e)
         {
 
         }

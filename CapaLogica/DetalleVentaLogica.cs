@@ -16,22 +16,5 @@ namespace CapaLogica
             _context = new EntidadesContainer();
         }
 
-        
-
-        public void AgregarDetalleVenta(DetalleVenta detalle)
-        {
-            _context.DetalleVentas.Add(detalle);
-            _context.SaveChanges();
-        }
-
-        public void EliminarDetalleVenta(int detalleId)
-        {
-            var detalle = _context.DetalleVentas.FirstOrDefault(dv => dv.Id == detalleId);
-            if (detalle != null)
-            {
-                _context.DetalleVentas.Remove(detalle);
-                _context.SaveChanges();
-            }
-        }
     }
 }

@@ -19,9 +19,30 @@ namespace ProyectoFinal
         public FrmConsultas()
         {
             InitializeComponent();
+            ConfigurarDgv();
             _consultaLogica = new ConsultaLogica(new EntidadesContainer());
         }
+        private void ConfigurarDgv()
+        {
+            dgvConsultas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvConsultas.DefaultCellStyle.Font = new Font("Verdana", 10, FontStyle.Regular);
+            dgvConsultas.DefaultCellStyle.ForeColor = Color.Black;
+            dgvConsultas.DefaultCellStyle.BackColor = Color.White;
+            dgvConsultas.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvConsultas.DefaultCellStyle.SelectionBackColor = Color.Blue;
 
+            dgvConsultas.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
+            dgvConsultas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvConsultas.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue;
+            dgvConsultas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvConsultas.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvConsultas.GridColor = Color.LightGray;
+
+            dgvConsultas.ColumnHeadersHeight = 35;
+            dgvConsultas.RowTemplate.Height = 30;
+        }
+        
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             try
@@ -54,6 +75,10 @@ namespace ProyectoFinal
                             {
                                 dgvConsultas.Columns["Subtotal"].Visible = false;
                             }
+                            if (dgvConsultas.Columns["Descripcion"] != null)
+                            {
+                                dgvConsultas.Columns["Descripcion"].HeaderText = "Categoria";
+                            }
                             MessageBox.Show("Venta consultada correctamente.");
                         }
                         else
@@ -69,28 +94,73 @@ namespace ProyectoFinal
                 }
                 else if (opcion == DialogResult.No) 
                 {
-                    DateTime fechaSeleccionada = dtpFecha.Value.Date;
-                    var ventaLogica = new ConsultaLogica(new EntidadesContainer());
-                    var ventas = ventaLogica.ConsultarVentasPorFecha(fechaSeleccionada);
-
-                    if (ventas.Any())
+                    DateTime? fechaSeleccionada = MostrarSeleccionFecha();
+                    if (fechaSeleccionada.HasValue)
                     {
-  
-                        dgvConsultas.DataSource = ventas;
-                        dgvConsultas.ClearSelection();
-                        MessageBox.Show("Ventas consultadas correctamente.");
+                        var ventaLogica = new ConsultaLogica(new EntidadesContainer());
+                        var ventas = ventaLogica.ConsultarVentasPorFecha(fechaSeleccionada.Value);
+
+                        if (ventas.Any())
+                        {
+
+                            dgvConsultas.DataSource = ventas;
+                            dgvConsultas.ClearSelection();
+                            MessageBox.Show("Ventas consultadas correctamente.");
+                        }
+                        else
+                        {
+                            dgvConsultas.DataSource = null;
+                            MessageBox.Show("No se encontraron ventas para la fecha seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
-                        dgvConsultas.DataSource = null;
-                        MessageBox.Show("No se encontraron ventas para la fecha seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No se seleccionó ninguna fecha.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error al consultar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private DateTime? MostrarSeleccionFecha()
+        {
+            Form formFecha = new Form
+            {
+                Width = 300,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = "Seleccionar Fecha",
+                StartPosition = FormStartPosition.CenterScreen
+            };
+
+            DateTimePicker dtp = new DateTimePicker
+            {
+                Format = DateTimePickerFormat.Short,
+                Location = new Point(50, 20),
+                Width = 200
+            };
+
+            Button btnAceptar = new Button
+            {
+                Text = "Aceptar",
+                DialogResult = DialogResult.OK,
+                Location = new Point(50, 60),
+                Width = 100
+            };
+
+            formFecha.Controls.Add(dtp);
+            formFecha.Controls.Add(btnAceptar);
+            formFecha.AcceptButton = btnAceptar;
+
+            if (formFecha.ShowDialog() == DialogResult.OK)
+            {
+                return dtp.Value.Date; 
+            }
+
+            return null; 
         }
     }
 }

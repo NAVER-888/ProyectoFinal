@@ -19,13 +19,44 @@ namespace ProyectoFinal
         public FrmProductos()
         {
             InitializeComponent();
+            ConfigurarDgv();
+            ConfigurarTextos();
             productoLogica = new ProductoLogica();
             ConsultarProductos();
         }
+        private void ConfigurarDgv()
+        {
+            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProductos.DefaultCellStyle.Font = new Font("Verdana", 10, FontStyle.Regular);
+            dgvProductos.DefaultCellStyle.ForeColor = Color.Black;
+            dgvProductos.DefaultCellStyle.BackColor = Color.White;
+            dgvProductos.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvProductos.DefaultCellStyle.SelectionBackColor = Color.Blue;
 
+            dgvProductos.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
+            dgvProductos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvProductos.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue;
+            dgvProductos.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProductos.GridColor = Color.LightGray;
+
+            dgvProductos.ColumnHeadersHeight = 35;
+            dgvProductos.RowTemplate.Height = 30;
+        }
+        private void ConfigurarTextos()
+        {
+            Font fuentePersonalizada = new Font("Arial", 12, FontStyle.Bold);
+
+            txtNombre.Font = fuentePersonalizada;
+            txtDescripcion.Font = fuentePersonalizada;
+            txtPrecio.Font = fuentePersonalizada;
+            txtStock.Font = fuentePersonalizada;
+        }
         private void ConsultarProductos()
         {
             dgvProductos.DataSource = productoLogica.ObtenerTodosLosProductos();
+            dgvProductos.Columns["DetalleVenta"].Visible = false;
         }
         private void SeleccionarFilaProducto(int productoId)
         {
@@ -54,90 +85,20 @@ namespace ProyectoFinal
             txtNombre.Focus();
             ConsultarProductos();
         }
-        private void btnNuevo_Click(object sender, EventArgs e)
+        
+        
+        private void btnReporteCliente_Click(object sender, EventArgs e)
+        {
+            FrmReportProductos reporte = new FrmReportProductos();
+            reporte.ShowDialog();
+        }
+
+        private void btnNuevo_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Ingrese el ID del producto:", "Buscar Producto", "", -1, -1);
-
-                if (!string.IsNullOrWhiteSpace(input)) 
-                {
-                    if (int.TryParse(input.Trim(), out int id))
-                    {
-                        var producto = productoLogica.BuscarProductoPorId(id);
-
-                        if (producto != null)
-                        {
-                            MostrarProducto(producto);
-
-                            dgvProductos.DataSource = new List<Producto> { producto };
-                            dgvProductos.ClearSelection();
-                            dgvProductos.Rows[0].Selected = true;
-                            dgvProductos.CurrentCell = dgvProductos.Rows[0].Cells[0];
-
-                            SeleccionarFilaProducto(producto.Id);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró ningún producto con ese ID.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ConsultarProductos();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("El ID debe ser un valor numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    ConsultarProductos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al consultar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvProductos.SelectedRows.Count == 0)
-                {
-                    MessageBox.Show("Debe seleccionar un producto para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                int productoId = (int)dgvProductos.SelectedRows[0].Cells["Id"].Value;
-
-                var confirmResult = MessageBox.Show(
-                    "¿Está seguro de que desea eliminar este producto?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    productoLogica.EliminarProducto(productoId);
-
-                    MessageBox.Show("Producto eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCampos();
-                    ConsultarProductos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al eliminar el producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text) || string.IsNullOrWhiteSpace(txtStock.Text))
             {
@@ -181,7 +142,85 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProductos.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un producto para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int productoId = (int)dgvProductos.SelectedRows[0].Cells["Id"].Value;
+
+                var confirmResult = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar este producto?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    productoLogica.EliminarProducto(productoId);
+
+                    MessageBox.Show("Producto eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarCampos();
+                    ConsultarProductos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al eliminar el producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnConsultar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string input = Interaction.InputBox("Ingrese el ID del producto:", "Buscar Producto", "", -1, -1);
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    if (int.TryParse(input.Trim(), out int id))
+                    {
+                        var producto = productoLogica.BuscarProductoPorId(id);
+
+                        if (producto != null)
+                        {
+                            MostrarProducto(producto);
+
+                            dgvProductos.DataSource = new List<Producto> { producto };
+                            dgvProductos.ClearSelection();
+                            dgvProductos.Rows[0].Selected = true;
+                            dgvProductos.CurrentCell = dgvProductos.Rows[0].Cells[0];
+
+                            SeleccionarFilaProducto(producto.Id);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró ningún producto con ese ID.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ConsultarProductos();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El ID debe ser un valor numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    ConsultarProductos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al consultar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnModificar_Click_1(object sender, EventArgs e)
         {
             if (dgvProductos.SelectedRows.Count == 0)
             {
@@ -219,8 +258,8 @@ namespace ProyectoFinal
                 MessageBox.Show("Producto modificado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 dgvProductos.ClearSelection();
-                ConsultarProductos(); 
-                btnNuevo.PerformClick(); 
+                ConsultarProductos();
+                btnNuevo.PerformClick();
             }
             else
             {
@@ -228,15 +267,9 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void btnReporteCliente_Click(object sender, EventArgs e)
-        {
-            FrmReportProductos reporte = new FrmReportProductos();
-            reporte.ShowDialog();
         }
     }
 }

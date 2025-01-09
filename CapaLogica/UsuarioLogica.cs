@@ -89,12 +89,7 @@ namespace CapaLogica
                 return false;
             }
         }
-        public List<Usuario> BuscarUsuariosPorNombre(string nombre)
-        {
-            return _context.Usuarios
-                           .Where(u => u.nombre.Contains(nombre))
-                           .ToList();
-        }
+        
         public Usuario ObtenerUsuarioPorId(int id)
         {
             return _context.Usuarios.Find(id);

@@ -29,6 +29,10 @@ namespace ProyectoFinal
         {
             lblUsuario.Text = $"Bienvenido, {_usuario.nombre}";  
             lblRol.Text = $"Rol: {_usuario.rol}";
+            if (_usuario.rol == "Operador")
+            {
+                btnUsuario.Visible = false; 
+            }
         }
         private void btnSlide_Click(object sender, EventArgs e)
         {

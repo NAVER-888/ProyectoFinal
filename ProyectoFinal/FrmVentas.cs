@@ -23,6 +23,8 @@ namespace ProyectoFinal
         public FrmVentas()
         {
             InitializeComponent();
+            ConfigurarDgv();
+            ConfigurarTextos();
             clienteLogica = new ClienteLogica();
             productoLogica = new ProductoLogica();
             ventaLogica = new VentaLogica();
@@ -30,6 +32,40 @@ namespace ProyectoFinal
             ConsultarVentas();
         }
 
+        private void ConfigurarDgv()
+        {
+            dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVentas.DefaultCellStyle.Font = new Font("Verdana", 10, FontStyle.Regular);
+            dgvVentas.DefaultCellStyle.ForeColor = Color.Black;
+            dgvVentas.DefaultCellStyle.BackColor = Color.White;
+            dgvVentas.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvVentas.DefaultCellStyle.SelectionBackColor = Color.Blue;
+
+            dgvVentas.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 12, FontStyle.Bold);
+            dgvVentas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue;
+            dgvVentas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvVentas.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvVentas.GridColor = Color.LightGray;
+
+            dgvVentas.ColumnHeadersHeight = 35;
+            dgvVentas.RowTemplate.Height = 30;
+        }
+        private void ConfigurarTextos()
+        {
+            Font fuentePersonalizada = new Font("Arial", 12, FontStyle.Bold);
+
+            cboCliente.Font = fuentePersonalizada;
+            cboProducto.Font = fuentePersonalizada;
+            txtPrecio.Font = fuentePersonalizada;
+            txtUnidades.Font = fuentePersonalizada;
+            txtSubtotal.Font = fuentePersonalizada;
+            dtpFecha.Font = fuentePersonalizada;
+            txtTotal.Font = fuentePersonalizada;
+            txtIGV.Font = fuentePersonalizada;
+            txtNeto.Font = fuentePersonalizada;
+        }
         private void FrmVentas_Load(object sender, EventArgs e)
         {
             CargarProductos();
@@ -79,7 +115,7 @@ namespace ProyectoFinal
             dgvVentas.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Descripcion",
-                HeaderText = "Descripcion",
+                HeaderText = "Categoria",
                 DataPropertyName = "descripcion", 
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
@@ -132,10 +168,11 @@ namespace ProyectoFinal
         {
             try
             {
-                cboCliente.SelectedItem = null; 
+                cboCliente.SelectedValue = 0;
+                cboProducto.SelectedValue = 0;
 
                 dtpFecha.Value = DateTime.Now; 
-
+                txtUnidades.Clear();
                 txtTotal.Text = string.Empty;
 
                 dgvVentas.DataSource = null; 
@@ -161,6 +198,7 @@ namespace ProyectoFinal
 
                 if (clientes != null && clientes.Count > 0)
                 {
+                    clientes.Insert(0, new Cliente { Id = 0, nombre = "Seleccionar" });
                     cboCliente.DataSource = clientes;
                     cboCliente.DisplayMember = "nombre"; 
                     cboCliente.ValueMember = "Id";     
@@ -184,6 +222,7 @@ namespace ProyectoFinal
 
                 if (productos != null && productos.Count > 0)
                 {
+                    productos.Insert(0, new Producto { Id = 0, nombre = "Seleccionar" });
                     cboProducto.DataSource = productos;
                     cboProducto.DisplayMember = "nombre"; 
                     cboProducto.ValueMember = "Id";     
@@ -305,6 +344,17 @@ namespace ProyectoFinal
                 if (cboProducto.SelectedItem == null || string.IsNullOrWhiteSpace(txtUnidades.Text))
                 {
                     MessageBox.Show("Debe seleccionar un producto y especificar las unidades.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (cboCliente.SelectedValue == null || (int)cboCliente.SelectedValue == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (cboProducto.SelectedValue == null || (int)cboProducto.SelectedValue == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un producto válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

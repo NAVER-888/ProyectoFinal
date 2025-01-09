@@ -19,8 +19,18 @@ namespace ProyectoFinal
 
         private void FrmReportVentas_Load(object sender, EventArgs e)
         {
+            
+            this.detalleVentasTableAdapter.Fill(this.bDProyectoFinalVentas.DetalleVentas);
+            
+            
+            
 
             this.reportViewer1.RefreshReport();
+        }
+
+        private void ventaBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

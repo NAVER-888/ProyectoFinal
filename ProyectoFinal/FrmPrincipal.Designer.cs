@@ -76,9 +76,10 @@
             // lblRol
             // 
             this.lblRol.AutoSize = true;
-            this.lblRol.BackColor = System.Drawing.Color.Red;
-            this.lblRol.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.Location = new System.Drawing.Point(3, 507);
+            this.lblRol.BackColor = System.Drawing.Color.Transparent;
+            this.lblRol.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.ForeColor = System.Drawing.Color.Gold;
+            this.lblRol.Location = new System.Drawing.Point(29, 507);
             this.lblRol.Name = "lblRol";
             this.lblRol.Size = new System.Drawing.Size(71, 24);
             this.lblRol.TabIndex = 7;
@@ -87,8 +88,9 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.Red;
-            this.lblUsuario.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsuario.Font = new System.Drawing.Font("Lucida Calligraphy", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.Gold;
             this.lblUsuario.Location = new System.Drawing.Point(3, 440);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(71, 24);
