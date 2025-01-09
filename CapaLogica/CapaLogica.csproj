@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteLogica.cs" />
+    <Compile Include="ConsultaLogica.cs" />
     <Compile Include="DetalleVentaLogica.cs" />
     <Compile Include="InformeLogica.cs" />
     <Compile Include="ProductoLogica.cs" />

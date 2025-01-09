@@ -121,16 +121,16 @@
   <data name="btnConsultar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAi5JREFUSEvt1kuoTVEcx/HtMZDoeiS5dPPIAGUmr65H1GUkYSRKYiAGSIxQBiSJ
-        DBRTkiQ3FBMpZWLmMWCkEJGkKI+8vt91rLrtzl5n7dMZnl99Onvt89977XP22mvtopsmGY7F2IN9WI+J
-        GJrx2I6DCX4/DlnpxzP8LfmCYzDT8AblmmZeoxfJrMMPeMADHMBunIcd/8QYnIM1N7Az4RqsO4vKTIUn
-        /4Ut7iilBzMam8U9eMLZoVWdmbDO+sqchkXx70zlPqydHlrV8XvrrK/MC/zGpNBKp6Mdf8O7xmbLdLTj
-        j/Ae+yi1Sm7HjgHrkvf4LixaFVrplDtehLmNzWIO4qgehHXJUb0JFj3BWHckEjuejwv4g8cwfvpd9ArJ
-        53gYbsPip1iNETCTsaSxGRI79vb46dgYgFmB4/9tQ9bM5S+9hXi1X/EWjnbby2BOINZcRnk6bSv+8g24
-        gw/4juc4hdEwI7ERS0Orm4wMXdp2wGfYlcfFobzENbMftf/uZkubD/zR0r4ch5Gd8tK2FsZVaCviJJDi
-        L/4EV7ScOT4kd2lrlUvwPL5AZOUqPGBBaLWfm/A8s0IrI4fgASdDq730wYXlPXIWl5AJ+Azvz2Z31MwU
-        PIIX74CsFQeU71EefB0L0SpOj3sR5+mHGIXaWY6X8CTyrfAKjmAX1iDGSd8p1DpXpIuI02hb8YqdQLx6
-        //p4EVF8yfNCfPbPYJ47Ohlns5WIM5qfLhzd1ExR/AOZxbjQ2RKexQAAAABJRU5ErkJggg==
+        EAAACxABrSO9dQAAAjBJREFUSEvtlkuojlEUhh+XgUTHJcmlk0sGKDO55RaFkYSRnJIYiAESI06dAUki
+        A8WUJIlQTKSUiZnLgJFyRCQpyiW33tP71W6d/f3//n9n+D+1+i7r3Xvt79t7r7Whw2CGA0uAfcABYBMw
+        MWjGAzuBww1M/nGhXS3LgefA32BfgD5rpgNvMpqc9QNTQ4xBbAR+uMFD4BCwFzjvwD+BMcA5a24AuxvY
+        NevOxkAp09z5L2B7dAJdwEzf33eHc4ImMss66Ws5bVH1OxvxwNoZ0RGQXzrpa3kJ/AYmRUeGIQ38DXgX
+        X9YwpIE/eo61lZpRGlhroOkc37NoTXRkiIEXA/N8PzdZ1TdLVvVWi54CY6MzUAVeAFwA/gBP7NNVvspe
+        N9vHw4A7Fj8D1gIj7JsMLE20VWBNj65aG+vsWwUct+0ozVz60tvJaL8Cb73a9bzCuhOJ5nImnbaFvnwz
+        cBf4AHwHXgCngNHWjAS2AMtC2w61pKVtl/ewKo+KQyxxOTvYzu/OlTZt+N7wrsSOxs4bEUvbBr9XFerJ
+        lLic6Ys/uaKV5PgBSktbMy65Hx0girjqBgujo0VuuZ/Z0VHHETc4GR0t0O3C8r6wuAwwAfjs+dkWnQVM
+        AR578FqQLaEFpXOUGl8HFkVBBqXH/UmefgSMiqISVgKvkq2hU+EV4BiwB1ifaJX0lUKlU0W6mKTRttCI
+        lUA0ev36uE+rQ54Gor1/Bpgf+vhvlM1WJxlNVxWODi3zD5nFuNCIg4+8AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
