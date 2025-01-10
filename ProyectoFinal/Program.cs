@@ -16,7 +16,7 @@ namespace ProyectoFinal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmReportVentas());
+            Application.Run(new FrmAcceso());
         }
     }
 }

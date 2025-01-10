@@ -56,6 +56,14 @@ namespace CapaLogica
             var cliente = _context.Clientes.FirstOrDefault(c => c.Id == id);
             if (cliente != null)
             {
+                var ventas = _context.Ventas.Where(v => v.ClienteId == id).ToList();
+                foreach (var venta in ventas)
+                {
+                    var detalles = _context.DetalleVentas.Where(d => d.VentaId == venta.Id).ToList();
+                    _context.DetalleVentas.RemoveRange(detalles); // Elimina los detalles de la venta
+                    _context.Ventas.Remove(venta);               // Elimina la venta
+                }
+
                 _context.Clientes.Remove(cliente);
                 _context.SaveChanges();
             }
