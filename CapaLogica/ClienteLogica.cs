@@ -60,8 +60,8 @@ namespace CapaLogica
                 foreach (var venta in ventas)
                 {
                     var detalles = _context.DetalleVentas.Where(d => d.VentaId == venta.Id).ToList();
-                    _context.DetalleVentas.RemoveRange(detalles); // Elimina los detalles de la venta
-                    _context.Ventas.Remove(venta);               // Elimina la venta
+                    _context.DetalleVentas.RemoveRange(detalles); 
+                    _context.Ventas.Remove(venta);              
                 }
 
                 _context.Clientes.Remove(cliente);
